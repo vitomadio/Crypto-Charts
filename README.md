@@ -1,7 +1,7 @@
 # Crypto-Currencies SVG Charts using React Server Side Rendering
 
-Este proyecto utiliza la API de Coinbase para datos de gráficos, por lo que deberá solicitar nuevas credenciales de Api para su uso.
-También incluye la autenticación Passport.js junto con la base de datos Postgres.
+This project uses Coinbase API for chart data, therefore you'll need to request a new Api credentials as for use it.
+Also include Passport.js authentication alongside Postgres database.
 
 ## Getting started
 
