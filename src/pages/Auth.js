@@ -15,7 +15,7 @@ class Auth extends Component {
     super(props)
     this.state = {
       marginTop: null,
-      page: null,
+      page: "login",
       remember: false,
       message: null,
       credentials: {
@@ -72,7 +72,8 @@ class Auth extends Component {
   }
 
   //Checks if login and signup componenets have changed.
-  onChangeView(page) {
+  onChangeView(page, e) {
+    e.preventDefault();
     if (this.state.page !== page) {
       this.setState({ page: page }, () => {
         this.onChangeMarginTop();
@@ -165,7 +166,10 @@ class Auth extends Component {
     const elHeight = ref.current.offsetHeight;
     const winHeight = window.innerHeight;
     const marginTop = (winHeight - elHeight) / 2;
-    this.setState({ marginTop: marginTop });
+
+    this.setState({
+      marginTop: marginTop
+    });
   }
 
   render() {
@@ -174,12 +178,12 @@ class Auth extends Component {
     const { message } = this.state;
 
     return (
-      <div className="container-fluid header-background p-0" style={styles.container}>
+      <div className="container-fluid header-background p-0" style={{ height: '100%' }}>
         <RegisterHeader
           changeView={(page) => this.onChangeView.bind(this, page)}
         />
-        <div className="container">
-          <div className="row justify-content-center" style={{ marginTop: this.state.marginTop }}>
+        <div className="container px-3" style={{ paddingTop: this.state.marginTop, paddingBottom: this.state.marginTop }}>
+          <div className="row justify-content-center">
             {message &&
               <div className="col-12">
                 <div className="col-4 alert alert-danger text-center mr-auto ml-auto">
@@ -212,11 +216,6 @@ class Auth extends Component {
   }
 }
 
-const styles = {
-  container: {
-    height: '100%'
-  },
-}
 
 const mapStateToProps = state => {
   return {

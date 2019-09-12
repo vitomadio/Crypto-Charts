@@ -3,8 +3,8 @@ import { Link } from 'react-router-dom';
 
 const Login = React.forwardRef((props, ref) => (
 
-    <div className="col-12 col-md-8 col-lg-6 col-xl-5" ref={ref} style={{ maxWidth: 470 }}>
-        <h2 className="text-white text-center mb-4">Log in to your account.</h2>
+    <div className="col-12 col-md-8 col-lg-6 col-xl-5 " ref={ref} style={{ maxWidth: 470 }}>
+        <h2 className="text-white text-center mb-1 mb-md-4 login-title">Log in to your account.</h2>
         <div className="card p-4 shadow-sm" style={{ borderRadius: 10 }} >
             <form className="form-group">
                 <div className="input-group-lg">

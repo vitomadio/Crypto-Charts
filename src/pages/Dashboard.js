@@ -1,15 +1,18 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import LineChart from '../components/LineChart/LineChart';
-import InfoBox from '../components/InfoBox/InfoBox';
-import ToolTip from '../components/ToolTip/ToolTip';
 import DashboardHeader from '../components/DashboardHeader/DashboardHeader';
 import PairBox from '../components/PairBox/PairBox';
 import PairStripe from '../components/PairStripe/PairStripe';
-import { getAllCurrenciesCurrentPrices, getAllCurrenciesHistoryPrices, getCurrencyPairs, changeListOrder } from '../store/actions';
-import { Button, Modal, ModalHeader, ModalBody, ModalFooter, ButtonGroup } from 'reactstrap';
+import {
+  getAllCurrenciesCurrentPrices,
+  getAllCurrenciesHistoryPrices,
+  getCurrencyPairs,
+  changeListOrder,
+  getSession
+} from '../store/actions';
 import { MdMenu } from 'react-icons/md';
 import { IoMdApps } from 'react-icons/io';
+import ModalDetails from '../components/ModalDetails/ModalDetails';
 
 class Dashboard extends Component {
 
@@ -44,19 +47,15 @@ class Dashboard extends Component {
     this._isMounted = true;
     //Get window width and pass it to state.
     const windowWidth = window.innerWidth;
+
     this.setState({
       windowWidth: windowWidth,
     });
 
-    this.props.onGetCurrencyPairs()
-      .then(data => {
-        this.setState({
-          pairs: data
-        })
-      })
-      .catch(err => console.log(err))
-
-
+    this.props.onGetCurrencyPairs();
+    if (!sessionStorage.getItem('uid')) {
+      this.props.onGetSession();
+    }
     //GETS ALL HISTORY PRICES.
     if (this.props.historyPrices.length < 1) {
       this.getHistoryPrices();
@@ -66,11 +65,16 @@ class Dashboard extends Component {
       this.getCurrentPrices();
     }
     //GET SVG BOX WIDTH AND HEIGHT.
-
     this.getLineChartWidth();
     //GET SVG STRIPE WIDTH AND HEIGHT.
     this.getLineChartSrtipeWidth();
+  }
 
+  componentDidUpdate() {
+    //GET SVG BOX WIDTH AND HEIGHT.
+    if (!this.state.svgWidth) {
+      this.getLineChartWidth();
+    }
   }
 
   //GET ALL HISTROY PRICES.
@@ -100,11 +104,10 @@ class Dashboard extends Component {
       activePoint: activePoint
     })
   }
-
   //Open/Close chart modal.
   toggleChartModal = (pairData) => {
     if (pairData) {
-      const pair = this.state.pairs.filter(pair => pair.pair === pairData[0].pair)[0];
+      const pair = this.props.pairs.filter(pair => pair.pair === pairData[0].pair)[0];
       this.setState(prevState => ({
         modal: !prevState.modal,
         pair: pair,
@@ -112,11 +115,11 @@ class Dashboard extends Component {
         setTimeout(() => {
           this.getLineChartModalWidth();
         }, 400)
-      })
+      });
     } else {
       this.setState(prevState => ({
         modal: !prevState.modal
-      }))
+      }));
     }
   }
 
@@ -229,11 +232,12 @@ class Dashboard extends Component {
       currency,
       svgWidth,
       windowWidth,
-      lineChartWidth
+      lineChartWidth,
+      modal
     } = this.state;
     const currentPrices = this.props.currentPrices;
     const historyData = this.props.historyPrices;
-    const pairs = this.state.pairs || this.props.pairs;
+    const pairs = this.props.pairs;
     let currencyPairs = pairs.map((item, i) => {
       return (
         <div className="col-12 col-md-4 p-2"
@@ -244,7 +248,7 @@ class Dashboard extends Component {
           onDragOver={this.allowDrop.bind(this)}
           draggable="false"
         >
-          {historyData && svgWidth ?
+          {historyData.length > 1 && svgWidth && currentPrices.length > 1 ?
             <PairBox
               id={i}
               dragStart={(e) => this.dragStart(e)}
@@ -259,14 +263,15 @@ class Dashboard extends Component {
               makeArea={false}
               xLabelSize={0}
               yLabelSize={0}
-              currentPrice={currentPrices && currentPrices.filter(price => price.base === item.pair)[0].amount}
+              currentPrice={currentPrices.filter(price => price.base === item.pair)[0].amount}
               currency={currency}
             />
             :
             <div
-              style={{ height: svgWidth * .8 }}
+              style={{ height: this.lineChartRef.current && this.lineChartRef.current.offsetWidth * .7 }}
               className="loaders-frames"
-            ></div>
+            >
+            </div>
           }
         </div>
       )
@@ -313,110 +318,18 @@ class Dashboard extends Component {
     return (
       <div className="container-fluid p-0" style={styles.container} >
         <DashboardHeader />
-        <Modal
-          isOpen={this.state.modal}
-          toggle={this.toggleChartModal.bind(this, null)}
-          centered={true}
-        >
-          <ModalHeader toggle={this.toggleChartModal.bind(this, null)} style={{ background: '#eee' }}>
-            <img src={pair ? `assets/${pair.path}` : null} alt=""
-              style={{ width: 30, height: 30, marginRight: '1rem' }}
-              className="d-inline"
-            />
-            <p style={{ fontSize: 24, color: '#666' }} className="d-inline">
-              {pair ? pair.name : null}
-            </p>
-          </ModalHeader>
-          <ModalBody id="modal-body" className="pt-5 pt-md-3">
-            <div className="row justify-content-center align-items-center" >
-              <div className="col-md-8 align-self-end" ref={this.lineChartModalRef} style={{ background: '#fff', borderRadius: 10 }}>
-                {
-                  historyData && pair && lineChartWidth ?
-                    <div>
-                      {hoverLoc ?
-                        <ToolTip
-                          hoverLoc={hoverLoc}
-                          activePoint={activePoint}
-                          marginTop={-45}
-                          lineClass={"linechart-dashboard"}
-                          currency={currency}
-                        /> : null}
-                      <LineChart
-                        data={historyData.filter(price => price.pair === pair.pair)}
-                        onChartHover={(a, b) => this.handleChartHover(a, b)}
-                        svgWidth={lineChartWidth}
-                        svgHeight={lineChartWidth * .6}
-                        makeArea={true}
-                        makeAxis={true}
-                        makeLabels={true}
-                        xLabelSize={30}
-                        yLabelSize={windowWidth < 577 ? 50 : 90}
-                        createLine={true}
-                        makeActivePoint={true}
-                        color="#007bff"
-                        strokeWidth={windowWidth < 577 ? 2 : 3}
-                        lineClass={"linechart-dashboard"}
-                        currency={currency}
-                        windowWidth={windowWidth}
-                      />
-                    </div>
-                    : null
-                }
-              </div>
-              <div className='col-md-4'>
-                <div className="row justify-content-center mt-3 mt-md-0">
-                  <ButtonGroup>
-                    <Button style={styles.innerBtnGrp}
-                      onClick={this.changePairRange.bind(this, 'USD')}
-                    >
-                      USD
-										</Button>
-                    <Button style={styles.innerBtnGrp}
-                      onClick={this.changePairRange.bind(this, 'EUR')}
-                    >
-                      EUR
-										</Button>
-                    <Button style={styles.innerBtnGrp}
-                      onClick={this.changePairRange.bind(this, 'GBP')}
-                    >
-                      GBP
-										</Button>
-                  </ButtonGroup>
-                </div>
-                {
-                  !fetchingData && pair ?
-                    <InfoBox
-                      currentPrice={true}
-                      monthChangeD={true}
-                      monthChangeP={true}
-                      currency={currency}
-                      pair={pair}
-                    />
-                    : null
-                }
-              </div>
-            </div>
-          </ModalBody>
-          <ModalFooter className="justify-content-md-start justify-content-center" >
-            <ButtonGroup style={{ marginLeft: windowWidth >= 768 ? 200 : null }}>
-              <Button style={styles.innerBtnGrp}
-                onClick={this.changeChartRange.bind(this, 'Day')}
-              >
-                Day
-										</Button>
-              <Button style={styles.innerBtnGrp}
-                onClick={this.changeChartRange.bind(this, 'Week')}
-              >
-                Week
-										</Button>
-              <Button style={styles.innerBtnGrp}
-                onClick={this.changeChartRange.bind(this, 'Month')}
-              >
-                Month
-										</Button>
-            </ButtonGroup>
-          </ModalFooter>
-        </Modal>
+        <ModalDetails
+          props={{
+            pair, currency, fetchingData, lineChartWidth, windowWidth, hoverLoc,
+            activePoint, historyData, modal
+          }}
+          modalRef={this.lineChartModalRef}
+          handleChartHover={(a, b) => this.handleChartHover(a, b)}
+          changePairRange={(pair) => this.changePairRange.bind(this, pair)}
+          changeChartRange={(range) => this.changeChartRange.bind(this, range)}
+          toggleModal={(pairData) => this.toggleChartModal.bind(this, pairData)}
+        />
+
         <div className="container" style={{ maxWidth: 1040 }}>
           <div className="row pt-3 px-2 no-gutters">
             <div className="col-md-12 bg-white dashboard-topbar d-flex p-1 justify-content-between">
@@ -490,7 +403,8 @@ const mapDispatchToProps = dispatch => ({
   getAllCurrenciesHistoryPrices: (currency) => dispatch(getAllCurrenciesHistoryPrices(currency)),
   onGetAllCurrenciesCurrentPrices: (currency) => dispatch(getAllCurrenciesCurrentPrices(currency)),
   onGetCurrencyPairs: () => dispatch(getCurrencyPairs()),
-  changeListOrder: (old_idx, new_idx) => dispatch(changeListOrder(old_idx, new_idx))
+  changeListOrder: (old_idx, new_idx) => dispatch(changeListOrder(old_idx, new_idx)),
+  onGetSession: () => dispatch(getSession())
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(Dashboard);

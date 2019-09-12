@@ -30,13 +30,13 @@ class RegisterHeader extends React.Component {
 
   render() {
     return (
-      <Navbar expand="md" className="bg-transparent px-0" dark={true} style={{ height: 62 }}>
+      <Navbar expand="md" className="bg-transparent px-0" dark={true} style={{ height: 62, zIndex: 999 }}>
         <div className="container" style={{ maxWidth: 1600 }}>
           <Link className="navbar-brand register" to="/">
             <LogoSVG fillOne="#fff" width={147.69} height={40} />
           </Link>
           <NavbarToggler onClick={this.toggle} className="text-white" />
-          <Collapse isOpen={this.state.isOpen} navbar>
+          <Collapse isOpen={this.state.isOpen} navbar className="navbar-colapse">
             <Nav className="ml-auto" navbar>
               <NavItem className="mr-lg-3 register">
                 <Link className="nav-link text-white hello-btn "

@@ -32,6 +32,20 @@ class Home extends React.Component {
     this.getAllHistoryPrices();
     //Adding onscroll event to window.
     window.addEventListener('scroll', this.handleScroll);
+
+    const sectionOne = window.document.querySelector('#section-one');
+    const sectionTwo = window.document.querySelector('#section-two');
+    const boundOne = sectionOne.getBoundingClientRect();
+    const boundTow = sectionTwo.getBoundingClientRect();
+
+    if (
+      boundOne.top >= 0 &&
+      boundOne.left >= 0 &&
+      boundOne.right <= window.innerWidth &&
+      (boundOne.bottom / 3) <= window.innerHeight
+    ) {
+      this.handleScroll();
+    }
   }
   //CLEAR INTERVAL BEFORE UNMOUNT.
   componentWillUnmount() {
@@ -94,12 +108,12 @@ class Home extends React.Component {
                   <img src="/assets/ether-images.png" className="ether-image" />
                   <img src="/assets/lite_images.png" className="lite-image" />
                   <img src="/assets/ripple_images.png" className="ripple-image" />
-                  <img src="/assets/isometric_image.png" className="isometric" style={styles.img} />
+                  <img src="/assets/isometric.png" className="isometric" style={styles.img} />
                 </div>
               </div>
             </div>
           </div>
-          <div className="container-fluid p-0">
+          <div className="container-fluid p-0" id="section-one">
             <div className="container pb-5 table-wrapper">
               <div className="row justify-content-center justify-content-xl-start">
                 <div className="col-12 col-lg-7 col-xl-8">
@@ -110,17 +124,17 @@ class Home extends React.Component {
                     currency={this.state.currency}
                   />
                 </div>
-                <div className="col-12 col-md-4">
+                <div className="d-none d-md-block col-md-4">
                   <img src="assets/iphone_mockup.png" alt="iphone-mockup-picture" id="iphone" />
                 </div>
               </div>
             </div>
           </div>
-          <div className="container-fluid services-background">
+          <div className="container-fluid services-background" id="section-two">
             <div className="container py-5">
               <div className="col-12 col-xl-8">
-                <div className="row justify-content-center services" style={{ position: 'relative' }}>
-                  <div className="col-12 col-md-4 mb-4 mb-md-0 text-center mt-lg-5 mt-xl-0">
+                <div className="row justify-content-center services align-items-center" style={{ position: 'relative' }}>
+                  <div className="col-12 col-md-4 mb-4 mb-md-0 text-center mt-3 mt-md-0">
                     <img src="assets/pc_svg.svg" alt="" className="services-svg mb-4" />
                     <h4 className="services-title mb-2">Check Your Stats</h4>
                     <p className="services-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus eu elit massa. Pellentesque vel leo non justo iaculis blandit a vitae ipsum. Nam eu volutpat ligula. Integer ac convallis mauris, commodo ullamcorper lacus.</p>

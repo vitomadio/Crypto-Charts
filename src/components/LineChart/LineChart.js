@@ -90,12 +90,12 @@ class LineChart extends Component {
             <g className="linechart_label" >
                 {/* Y AXIS LABELS */}
                 <text transform={`translate(${yLabelSize + padding}, ${xLabelSize / 2})`} textAnchor="end"
-                    font-size={windowWidth < 577 ? 10 : 16}
+                    fontSize={windowWidth < 577 ? 10 : 16}
                 >
                     {parseFloat(this.getY().max).toLocaleString('us-EN', { style: 'currency', currency: currency })}
                 </text>
                 <text transform={`translate(${yLabelSize + padding}, ${svgHeight - (xLabelSize + 5)})`} textAnchor="end"
-                    font-size={windowWidth < 577 ? 10 : 16}
+                    fontSize={windowWidth < 577 ? 10 : 16}
                 >
                     {parseFloat(this.getY().min).toLocaleString('us-EN', { style: 'currency', currency: currency })}
                 </text>

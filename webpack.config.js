@@ -1,3 +1,4 @@
+const webpack = require('webpack');
 const dev = process.env.NODE_ENV !== "production";
 const path = require("path");
 
@@ -17,7 +18,8 @@ module.exports = {
             },
             {
                 test: /\.css$/,
-                use: ['style-loader', 'css-loader']
+                // use: ['style-loader', 'css-loader']
+                use: ['ignore-loader']
             }
         ],
     },
@@ -27,5 +29,12 @@ module.exports = {
     },
     node: {
         fs: "empty"
-    }
+    },
+    plugins: [
+        new webpack.DefinePlugin({
+            'process.env.NODE_ENV': JSON.stringify('production')
+        })
+    ],
+
+
 }

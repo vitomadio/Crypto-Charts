@@ -89,7 +89,7 @@ function htmlTemplate(reactDom, reduxState, helmetData) {
             <script>
                 window.REDUX_DATA = ${ JSON.stringify(reduxState)}
             </script>
-            <script src='app.bundle.js'></script>
+            <script src='js/app.bundle-min.js' async></script>
            
         </body>
         </html>

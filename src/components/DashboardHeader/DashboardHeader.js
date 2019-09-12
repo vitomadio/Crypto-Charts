@@ -67,6 +67,14 @@ class DashboardHeader extends Component {
           <NavbarToggler onClick={this.toggle} className="text-white" />
           <Collapse isOpen={this.state.isOpen} navbar>
             <Nav className="ml-auto" navbar>
+
+              <NavItem>
+                <Link className="nav-link text-white hello-btn"
+                  to={{ pathname: '/', state: { page: 'home' } }}
+                >
+                  Home
+                  </Link>
+              </NavItem>
               <NavItem>
                 <Link className="nav-link text-white mr-3 hello-btn"
                   to={{ pathname: '/auth', state: { page: 'register' } }}

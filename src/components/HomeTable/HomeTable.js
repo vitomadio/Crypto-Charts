@@ -2,6 +2,7 @@ import React from 'react';
 import './HomeTable.css';
 import RingLoader from '../RingLoader/RingLoader';
 import LineChart from '../LineChart/LineChart';
+import pairs from '../../currencyPairs';
 
 const HomeTable = (props) => {
   // const fetchingData = props.fetchingData;
@@ -29,7 +30,7 @@ const HomeTable = (props) => {
           <th className="py-3 text-left pl-4">CHART</th>
         </tr>
         {props.currentPrices.length >= 1 && props.data.length >= 1 ?
-          props.pairs.map((pair, i) => {
+          pairs.map((pair, i) => {
             if (i < 5) {
               return (
                 <tr key={i} style={{ borderBottom: i < 4 ? '1px solid #CCC' : '0px solid #CCC' }}>
@@ -66,7 +67,7 @@ const HomeTable = (props) => {
             }
           })
           :
-          props.pairs.map((pair, i) => {
+          pairs.map((pair, i) => {
             if (i < 5) {
               return (
                 <tr key={i} style={{ borderBottom: i < 4 ? '1px solid #CCC' : '0px solid #CCC' }}>
@@ -112,7 +113,6 @@ const styles = {
     borderRadius: 18,
     backgroundColor: '#fff',
     boxShadow: '0px 4px 6px rgba(0,0,0,.2)',
-    marginTop: -80
   },
   iconSpan: {
     width: 50,
@@ -120,8 +120,8 @@ const styles = {
     justifyContent: 'center'
   },
   icons: {
-    maxWidth: 40,
-    maxHeight: 40,
+    maxWidth: 35,
+    maxHeight: 35,
     textAlign: 'center'
   },
   abreviations: {

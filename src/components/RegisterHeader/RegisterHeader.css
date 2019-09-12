@@ -7,8 +7,6 @@ button.navbar-toggler {
     margin-left: 2em;
 }
 
-.navbar-toggler-icon {}
-
 @media (max-width: 767px) {
     .logout-btn {
         border-color: transparent !important;
@@ -22,5 +20,8 @@ button.navbar-toggler {
     }
     button.navbar-toggler {
         margin-right: 1em;
+    }
+    .navbar-collapse {
+        background: #3252A0;
     }
 }

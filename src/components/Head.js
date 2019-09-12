@@ -8,12 +8,13 @@ const Head = () => (
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="description" content="This is a real time crypto-currencies charts App." />
+    <link rel="shorcut icon" href="assets/CC.png" type="image/x-icon" />
     <title>Crypto Charts</title>
     <link
       rel="stylesheet"
       href="css/bootstrap.min.css"
     />
-    <link rel="stylesheet" href="/css/styles-min.css" />
+    <link rel="stylesheet" href="css/styles-min.css" />
 
   </Helmet>
 

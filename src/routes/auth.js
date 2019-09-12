@@ -4,21 +4,8 @@ const LocalStrategy = require('passport-local').Strategy;
 const bcrypt = require('bcrypt')
 const uuidv4 = require('uuid/v4');
 const pool = require('../db-config/db');
-// const dotenv = require('dotenv');
-// dotenv.config();
-
-// const { Pool } = require('pg')
-// const pool = new Pool({
-//   user: process.env.PGUSER,
-//   host: process.env.PGHOST,
-//   database: process.env.PGDATABASE,
-//   password: process.env.PGPASSWORD,
-//   port: process.env.PGPORT,
-//   ssl: false
-// });
 
 const router = express.Router();
-
 
 //Signup
 router.post('/signup', async (req, res) => {
@@ -47,8 +34,6 @@ router.post('/signup', async (req, res) => {
   }
   catch (e) { console.log(e); }
 });
-
-
 
 //Login user.
 router.post('/login', (req, res) => {

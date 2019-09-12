@@ -63,7 +63,5 @@ dist
 #assets folder
 assets
 
-#Dockers files
-Dockerfile
-docker-compose.yml
+
 .dockerignore
