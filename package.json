@@ -12,7 +12,11 @@
     "gulp-dev": "gulp default",
     "linter": "eslint src",
     "bundlesize": "bundlesize",
-    "precommit": "eslint src --quiet"
+    "precommit": "eslint src --quiet",
+    "postinstall": "node index.js"
+  },
+  "engines": {
+    "node": "~8.15.0"
   },
   "dependencies": {
     "axios": "^0.18.0",
