@@ -1,1 +1,1 @@
-web: npm i -g webpack webpack-cli
+web: node index.js

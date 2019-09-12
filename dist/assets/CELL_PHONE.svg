@@ -1,0 +1,28 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="58" height="122" viewBox="0 0 58 122">
+  <g id="CELL_PHONE" transform="translate(-952 -1057)">
+    <g id="Rectangle_20" data-name="Rectangle 20" transform="translate(952 1057)" fill="none" stroke="#fff" stroke-width="2">
+      <rect width="58" height="122" rx="8" stroke="none"/>
+      <rect x="1" y="1" width="56" height="120" rx="7" fill="none"/>
+    </g>
+    <g id="Rectangle_21" data-name="Rectangle 21" transform="translate(956 1061)" fill="none" stroke="#fff" stroke-width="2">
+      <rect width="50" height="114" rx="5" stroke="none"/>
+      <rect x="1" y="1" width="48" height="112" rx="4" fill="none"/>
+    </g>
+    <g id="Rectangle_22" data-name="Rectangle 22" transform="translate(975 1169)" fill="none" stroke="#fff" stroke-width="1">
+      <rect width="15" height="3" stroke="none"/>
+      <rect x="0.5" y="0.5" width="14" height="2" fill="none"/>
+    </g>
+    <g id="Rectangle_23" data-name="Rectangle 23" transform="translate(964 1075)" fill="none" stroke="#fff" stroke-width="1">
+      <rect width="34" height="25" stroke="none"/>
+      <rect x="0.5" y="0.5" width="33" height="24" fill="none"/>
+    </g>
+    <g id="Rectangle_24" data-name="Rectangle 24" transform="translate(964 1103)" fill="none" stroke="#fff" stroke-width="1">
+      <rect width="34" height="25" stroke="none"/>
+      <rect x="0.5" y="0.5" width="33" height="24" fill="none"/>
+    </g>
+    <g id="Rectangle_25" data-name="Rectangle 25" transform="translate(964 1131)" fill="none" stroke="#fff" stroke-width="1">
+      <rect width="34" height="25" stroke="none"/>
+      <rect x="0.5" y="0.5" width="33" height="24" fill="none"/>
+    </g>
+  </g>
+</svg>

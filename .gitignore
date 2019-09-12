@@ -58,5 +58,4 @@ typings/
 .env
 
 #Others folders.
-dist
 .vscode

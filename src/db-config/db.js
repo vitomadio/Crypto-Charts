@@ -11,7 +11,7 @@ let pool = new Pool({
     ssl: false
 });
 if (process.env.NODE_ENV) {
-    return pool = new Pool({ connectionString: process.env.DATABASE_URL })
+    pool = new Pool({ connectionString: process.env.DATABASE_URL })
 }
 
 module.exports = pool;
