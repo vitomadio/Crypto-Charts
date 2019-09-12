@@ -1,0 +1,7 @@
+node_modules
+.vscode
+dist
+.dockerignore
+Dockerfile
+docker-compose
+ps_docker

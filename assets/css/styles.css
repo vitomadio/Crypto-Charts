@@ -1,0 +1,610 @@
+/* DEFAULT STYLES OVERRIDES */
+
+body, body>div, body>div>div {
+    font-family: 'Arcon';
+    height: 100%;
+    overflow: unset;
+    padding: 0px !important;
+}
+
+html {
+    overflow-x: hidden;
+    height: 100%;
+}
+
+button:focus, button:active, .btn:focus, .btn:active, .show>.btn-secondary.dropdown-toggle:focus {
+    outline: none !important;
+    box-shadow: none;
+}
+
+/* Change input placeholder globally */
+
+input::-webkit-input-placeholder {
+    color: #aaa !important;
+    font-size: 18px;
+    font-weight: 200;
+}
+
+input:-moz-placeholder {
+    /* Firefox 18- */
+    color: #aaa !important;
+    font-size: 18px;
+    font-weight: 200;
+}
+
+input::-moz-placeholder {
+    /* Firefox 19+ */
+    color: #aaa !important;
+    font-size: 18px;
+    font-weight: 200;
+}
+
+input:-ms-input-placeholder {
+    color: #aaa !important;
+    font-size: 18px;
+    font-weight: 200;
+}
+
+h1 {
+    font-size: 30px;
+    padding: 0;
+    margin: 0;
+    font-weight: 700;
+    color: #757575;
+}
+
+.alert {
+    border-radius: .5rem !important;
+    font-size: 1.2rem;
+}
+
+a.nav-link {
+    color: rgb(44, 87, 196);
+}
+
+a.nav-link:hover {
+    color: #007bff;
+    cursor: hand !important;
+}
+
+.text-primary {
+    color: #3252A0 !important;
+}
+
+.bg-black {
+    background: #000;
+}
+
+.btn-primary {
+    background-color: #3D79BD;
+}
+
+.btn-outline-light:hover {
+    color: #3252A0;
+}
+
+/* Dashboard styles */
+
+#coindesk {
+    font-weight: 300;
+}
+
+#coindesk a {
+    text-decoration: none;
+    color: inherit;
+}
+
+.dashboard-topbar {
+    box-shadow: 0px 0px 5px rgb(191, 191, 191) !important;
+}
+
+.dashboard-topbar-text {
+    color: #aaa;
+    cursor: pointer;
+}
+
+.popup {
+    min-height: 50px;
+}
+
+.innerBtnGrp {
+    background: #ccc !important;
+    color: #fff
+}
+
+/* PAIR BOX LOADERS ANIMATION */
+
+.loaders-frames {
+    padding: .75em 1.5em;
+    box-shadow: 0px 0px 5px rgb(191, 191, 191) !important;
+    background: linear-gradient(to right, #fff 50%, #eee 70%, #fff 100%);
+    background-position: 0%;
+    background-size: 300%;
+    -webkit-animation: AnimationName 3s infinite;
+    -moz-animation: AnimationName 3s infinite;
+    animation: AnimationName 3s infinite;
+}
+
+@-webkit-keyframes AnimationName {
+    0% {
+        background-position: 0%
+    }
+    100% {
+        background-position: 300%
+    }
+}
+
+@-moz-keyframes AnimationName {
+    0% {
+        background-position: 0%
+    }
+    100% {
+        background-position: 300%
+    }
+}
+
+@keyframes AnimationName {
+    0% {
+        background-position: 0%
+    }
+    100% {
+        background-position: 300%
+    }
+}
+
+/** PAIR BOX LOADERS ANIMATION **/
+
+/* HOME   */
+
+.header-background {
+    background-image: linear-gradient(to right, #46BAEC 0%, #3C93D0 35%, #3D79BD 50%, #3E5FA9 70%, #404A9A 100%);
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+.header-title {
+    margin-bottom: .3em;
+    font-size: 30px;
+}
+
+.header-text {
+    font-weight: 200 !important;
+    font-size: 18px;
+}
+
+.get-started-btn {
+    width: 50%;
+    padding: .75em;
+    margin-top: 3rem;
+}
+
+.services-svg {
+    height: 80px;
+    color: #fff;
+}
+
+.services-title {
+    color: #fff;
+}
+
+.services-text {
+    color: #fff;
+}
+
+.services-background {
+    background: #3D79BD;
+}
+
+.text-macbook {
+    position: absolute;
+    width: 40%;
+    right: 0;
+    top: 3em;
+}
+
+.macbook-title {
+    color: rgb(31, 144, 206);
+    text-align: center;
+}
+
+.macbook-text {
+    color: #888;
+    font-size: 20px;
+}
+
+/* MACBOOK AND IPHONE ANIMATIONS */
+
+#iphone {
+    position: relative;
+    max-width: 100%;
+    opacity: 0;
+}
+
+.iphone-image {
+    animation: iphone 1.5s ease-out forwards;
+    -webkit-animation: iphone 1.5s ease-out forwards;
+    -moz-animation: iphone 1.5s ease-out forwards;
+}
+
+@keyframes iphone {
+    from {
+        opacity: 0;
+        transform: translateX(100%);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0%);
+    }
+}
+
+@-webkit-keyframes iphone {
+    from {
+        opacity: 0;
+        transform: translateX(100%);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0%);
+    }
+}
+
+@-moz-keyframes iphone {
+    from {
+        opacity: 0;
+        transform: translateX(100%);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0%);
+    }
+}
+
+#macbook {
+    position: relative;
+    /* left: -100%; */
+    width: 100%;
+    opacity: 0;
+}
+
+.macbook-image {
+    -webkit-animation: macbook 1.5s ease-out forwards;
+    animation: macbook 1.5s ease-out forwards;
+    -moz-animation: macbook 1.5s ease-out forwards;
+}
+
+@keyframes macbook {
+    from {
+        opacity: 0;
+        transform: translateX(-100%);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0%);
+    }
+}
+
+@-webkit-keyframes macbook {
+    from {
+        opacity: 0;
+        transform: translateX(-100%);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0%);
+    }
+}
+
+@-moz-keyframes macbook {
+    from {
+        opacity: 0;
+        transform: translateX(-100%);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0%);
+    }
+}
+
+.home-footer-widget-text {
+    color: #898989;
+}
+
+.home-footer-widget-text.title {
+    font-size: 20px;
+}
+
+/* Header image */
+
+/* DASHBOARD MODAL */
+
+.modal-dialog {
+    max-width: 80%;
+}
+
+.iphone-image {
+    margin-top: 40%;
+    margin-bottom: -130%;
+    max-width: 370px;
+}
+
+#macbook {
+    margin-top: -10%
+}
+
+/* ============ HEADER IMAGE WITH ANIMATIONS =========== */
+
+.isometric {
+    display: block;
+    position: absolute;
+    max-width: 97%;
+    margin-top: -25%;
+    z-index: 1;
+}
+
+.bitcoin-image {
+    display: block;
+    position: absolute;
+    width: 20%;
+    height: auto;
+    margin-left: 22%;
+    margin-top: 60%;
+    z-index: 5;
+    animation: bitcoin 2s alternate ease-out infinite;
+    -webkit-animation: bitcoin 2s alternate ease-out infinite;
+    -moz-animation: bitcoin 2s alternate ease-out infinite;
+}
+
+@keyframes bitcoin {
+    100% {
+        margin-top: 40%;
+    }
+}
+
+@-moz-keyframes bitcoin {
+    100% {
+        margin-top: 40%;
+    }
+}
+
+@-webKit-keyframes bitcoin {
+    100% {
+        margin-top: 40%;
+    }
+}
+
+.ether-image {
+    display: block;
+    position: absolute;
+    width: 15%;
+    height: auto;
+    margin-left: 17%;
+    margin-top: 27%;
+    z-index: 4;
+    animation: ethereum 2s alternate ease-in infinite;
+    -webkit-animation: ethereum 2s alternate ease-in infinite;
+    -moz-animation: ethereum 2s alternate ease-in infinite;
+}
+
+@keyframes ethereum {
+    100% {
+        margin-top: 47%;
+    }
+}
+
+@-moz-keyframes ethereum {
+    100% {
+        margin-top: 47%;
+    }
+}
+
+@-webKit-keyframes ethereum {
+    100% {
+        margin-top: 47%;
+    }
+}
+
+.lite-image {
+    display: block;
+    position: absolute;
+    width: 13%;
+    height: auto;
+    z-index: 3;
+    margin-left: 40%;
+    margin-top: 45%;
+    animation: litecoin 2s alternate ease-in infinite;
+    -webkit-animation: litecoin 2s alternate ease-in infinite;
+    -moz-animation: litecoin 2s alternate ease-in infinite;
+}
+
+@keyframes litecoin {
+    100% {
+        margin-top: 58%;
+    }
+}
+
+@-moz-keyframes litecoin {
+    100% {
+        margin-top: 58%;
+    }
+}
+
+@-webKit-keyframes litecoin {
+    100% {
+        margin-top: 58%;
+    }
+}
+
+.ripple-image {
+    display: block;
+    position: absolute;
+    width: 11%;
+    height: auto;
+    z-index: 3;
+    margin-left: 50%;
+    margin-top: 74%;
+    animation: ripple 2s alternate ease-out infinite;
+    -webkit-animation: ripple 2s alternate ease-out infinite;
+    -moz-animation: ripple 2s alternate ease-out infinite;
+}
+
+@keyframes ripple {
+    100% {
+        margin-top: 51%;
+    }
+}
+
+@-moz-keyframes ripple {
+    100% {
+        margin-top: 51%;
+    }
+}
+
+@-webKit-keyframes ripple {
+    100% {
+        margin-top: 51%;
+    }
+}
+
+/* ============ HEADER IMAGE WITH ANIMATIONS END =========== */
+
+/* SPECIFIC MEASURE */
+
+@media (max-width: 375px) {
+    .table-wrapper {
+        overflow-x: scroll;
+    }
+}
+
+/* SMALL SCREEN 0px - 576px */
+
+@media (max-width: 577px) {
+    .header-text-wrapper>div.row {
+        margin-top: 4em;
+    }
+    .header-image-wrapper {
+        margin-top: -50%;
+        opacity: .4;
+    }
+    .text-macbook {
+        position: static;
+        width: 90%;
+        margin: 1em auto;
+        font-size: 12px;
+    }
+    .footer-widget-wrapper {
+        max-width: 100%;
+    }
+    .modal-dialog {
+        max-width: 100% !important;
+    }
+    .iphone-image {
+        display: none;
+    }
+    h2.signup-title, h2.login-title {
+        font-size: 20px !important;
+    }
+}
+
+/* MEDIUM SCREENS 578px - 767px */
+
+@media (min-width: 578px) and (max-width:767px) {
+    .modal-dialog {
+        max-width: 100% !important;
+    }
+    .header-text-wrapper>div.row {
+        margin-top: 4em;
+    }
+    .header-image-wrapper {
+        margin-top: -50%;
+        opacity: .3;
+    }
+    .table-wrapper {
+        max-width: 90%
+    }
+    .header-text-wrapper {
+        max-width: 60%;
+    }
+    .footer-widget-wrapper {
+        max-width: 90%
+    }
+    .home-footer-widget-text.title {
+        font-size: 14px;
+    }
+    .macbook-text {
+        font-size: 16px;
+        line-height: 20px;
+    }
+    .text-macbook {
+        position: absolute;
+        width: 40%;
+        right: 0;
+        top: 1em;
+    }
+    .macbook-wrapper {
+        max-width: 90%;
+    }
+    #macbook {
+        margin-top: 1em;
+    }
+}
+
+/* LARGE SCREENS 768px - 991px */
+
+@media (min-width: 768px) and (max-width:991px) {
+    .iphone-image {
+        display: none;
+    }
+    .text-macbook {
+        position: absolute;
+        width: 40%;
+        top: 1em;
+        right: 0;
+    }
+    .macbook-text {
+        font-size: 16px;
+        line-height: 20px;
+    }
+    .get-started-btn {
+        width: 70%;
+        padding: .75em;
+        margin-top: 1.5rem;
+    }
+}
+
+/* EXTRA LARGE SCREENS 992px - 1199px */
+
+@media (min-width: 992px) and (max-width:1199px) {
+    .iphone-image {
+        margin-top: 2em;
+        max-width: 100%;
+    }
+    #macbook {
+        margin-top: -10%
+    }
+    .services-background {
+        padding-top: 2.75rem;
+    }
+}
+
+/* XXLARRGE AND BEYOND SCREENS 1200px - infinite */
+
+@media (min-width: 1200px) {
+    /*Overides padding for container-fluid in xl screens. */
+    .container-home {
+        min-width: 1200px !important;
+        padding: 0 auto;
+    }
+    .modal-dialog {
+        max-width: 800px;
+    }
+    .header-text-wrapper>div.row {
+        margin-top: 5em;
+    }
+    .iphone-image {
+        margin-bottom: -130%;
+    }
+    .header-image-wrapper {
+        max-width: 600px;
+    }
+}
