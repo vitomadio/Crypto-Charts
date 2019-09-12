@@ -2,7 +2,7 @@ const dotenv = require('dotenv');
 dotenv.config();
 const { Pool } = require('pg');
 
-const pool = new Pool({
+let pool = new Pool({
     user: process.env.PGUSER,
     host: process.env.PGHOST,
     database: process.env.PGDATABASE,
@@ -10,5 +10,8 @@ const pool = new Pool({
     port: process.env.PGPORT,
     ssl: false
 });
+if (process.env.NODE_ENV) {
+    return pool = new Pool({ connectionString: process.env.DATABASE_URL })
+}
 
 module.exports = pool;
