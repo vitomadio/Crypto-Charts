@@ -1,0 +1,1 @@
+web: npm i -g webpack webpack-cli
