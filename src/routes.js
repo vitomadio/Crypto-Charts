@@ -3,6 +3,8 @@ import About from "./pages/About";
 import Auth from "./pages/Auth";
 import Dashboard from "./pages/Dashboard";
 
+
+
 export default [
     {
         path: "/",
@@ -16,10 +18,14 @@ export default [
     },
     {
         path: "/auth",
-        component: Auth
+        component: Auth,
     },
     {
         path: "/dashboard",
-        component: Dashboard
+        component: Dashboard,
     },
 ];
+
+
+
+

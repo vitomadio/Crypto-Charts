@@ -16,7 +16,9 @@ class Layout extends React.Component {
             <div>
                 <Head />
                 <Switch>
-                    {routes.map(route => <Route key={route.path} path={route.path} exact={route.exact} render={props => <route.component props={props} />} />)}
+                    {routes.map(route =>
+                        <Route key={route.path} path={route.path} exact={route.exact} render={props => <route.component props={props} />} />)
+                    }
                 </Switch>
             </div>
         );

@@ -5,6 +5,7 @@ const pool = require('../db-config/db');
 
 router.get('/', (req, res) => {
     pool.connect((err, client, done) => {
+        console.log(client)
         if (err) throw err
         client.query('SELECT * FROM currency_pairs ORDER BY position ASC', (err, response) => {
             done()

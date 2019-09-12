@@ -10,4 +10,6 @@ COPY . .
 
 EXPOSE 3000
 
+ARG NODE_ENV=production
+
 CMD ["npm", "run", "start"]
