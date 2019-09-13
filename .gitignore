@@ -59,3 +59,4 @@ typings/
 
 #Others folders.
 .vscode
+dist
