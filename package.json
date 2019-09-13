@@ -11,8 +11,7 @@
     "gulp-dev": "gulp default",
     "linter": "eslint src",
     "bundlesize": "bundlesize",
-    "precommit": "eslint src --quiet",
-    "postinstall": "node index.js"
+    "precommit": "eslint src --quiet"
   },
   "engines": {
     "node": "~8.15.0"

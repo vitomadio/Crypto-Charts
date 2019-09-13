@@ -69,7 +69,7 @@ app.get('/*', (req, res) => {
 
 
 
-app.listen(port, () => {
+app.listen((process.env.PORT || 30000), () => {
     console.log("Server connected on port: " + port);
 });
 
