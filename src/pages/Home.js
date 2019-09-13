@@ -36,7 +36,7 @@ class Home extends React.Component {
     const sectionOne = window.document.querySelector('#section-one');
     const sectionTwo = window.document.querySelector('#section-two');
     const boundOne = sectionOne.getBoundingClientRect();
-    const boundTow = sectionTwo.getBoundingClientRect();
+    const boundTwo = sectionTwo.getBoundingClientRect();
 
     if (
       boundOne.top >= 0 &&
