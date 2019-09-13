@@ -4,4 +4,6 @@ node_modules
 Dockerfile
 docker-compose
 ps_docker
-dist
+dist/css/styles-min.css
+dist/js
+dist/app*
