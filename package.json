@@ -10,7 +10,7 @@
     "plugins": ["@babel/transform-runtime"]
   },
   "scripts": {
-    "build": "webpack && npm run gulp-dev",
+    "build": "webpack --progress && npm run gulp-dev",
     "start": "NODE_ENV=production node index.js",
     "dev": "concurrently \"npm run gulp-dev\" \"npm run server\" \"npm run client\" ",
     "server": "nodemon index.js",
