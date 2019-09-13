@@ -11,7 +11,6 @@ import { renderToString } from 'react-dom/server';
 import { StaticRouter, matchPath } from "react-router-dom";
 import { Provider as ReduxProvider } from "react-redux";
 import Helmet from "react-helmet";
-import routes from "./routes";
 import Layout from "./components/Layout";
 import createStore from "./store/store";
 
@@ -41,7 +40,6 @@ app.use('/currency-pairs', currency);
 app.get('/*', (req, res) => {
     const context = {};
     const store = createStore();
-
 
     const dataRequirements =
         routes

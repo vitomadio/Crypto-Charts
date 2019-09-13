@@ -8,13 +8,21 @@ module.exports = {
     devtool: dev ? "none" : "source-map",
     entry: {
         app: "./client.js",
+        server: "./server.js"
     },
     module: {
         rules: [
             {
                 test: /.(js|jsx)$/,
                 exclude: /(node_modules|bower_components)/,
-                use: ['babel-loader']
+                use: [
+                    {
+                        loader: 'babel-loader',
+                        query: {
+                            presets: ['@babel/preset-env', "@babel/preset-react"]
+                        }
+                    }
+                ]
             },
             {
                 test: /\.css$/,
