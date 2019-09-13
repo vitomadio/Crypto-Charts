@@ -78,6 +78,8 @@ function htmlTemplate(reactDom, reduxState, helmetData) {
         <html>
         <head>
             <meta charset='utf-8'>
+            <link href="stylesheet" href="css/bootstrap.min.css">
+            el="shorcut icon" href="assets/CC.png" type="image/x-icon" />
             ${ helmetData.title.toString()}
             ${ helmetData.meta.toString()}
             ${ helmetData.link.toString()}
