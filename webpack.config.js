@@ -8,7 +8,6 @@ module.exports = {
     devtool: dev ? "none" : "source-map",
     entry: {
         app: "./client.js",
-        server: "./server.js"
     },
     module: {
         rules: [
