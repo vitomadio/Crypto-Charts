@@ -13,6 +13,7 @@ import { Provider as ReduxProvider } from "react-redux";
 import Helmet from "react-helmet";
 import Layout from "./components/Layout";
 import createStore from "./store/store";
+import routes from './routes';
 
 const auth = require('./routes/auth');
 const charts = require('./routes/charts');
